@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Image Gallery</title>
+    <style>
+        /* Add CSS styles for the images */
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .gallery-image {
+            max-width: 300px;
+            max-height: 200px;
+            margin: 10px;
+        }
+
+        .download-button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 5px;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 0px;
+        }
+
+        .gallery-button {
+            display: inline-block;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<h1>Image Gallery</h1>
+<div class="button-container">
+    <a th:href="@{/}" class="gallery-button">Add another photo</a>
+</div>
+<div class="image-container">
+    <div th:each="image : ${images}">
+        <div>
+            <img th:src="${image.url}" alt="Image" class="gallery-image"/>
+            <a th:href="${image.url}" class="download-button" th:download="'image_' + ${image.public_id} + '.jpg'">Download</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

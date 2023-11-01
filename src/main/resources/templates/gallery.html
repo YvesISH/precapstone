@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Uploaded Page</title>
+    <style>
+        body {
+            background-color: cadetblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .image-container {
+            text-align: center;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        .image {
+            max-width: 50%; /* Reduce the image width to 50% */
+            height: auto;
+            display: block;
+            margin: 10px; /* Add space around each image */
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .gallery-button {
+            display: inline-block;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="image-container">
+    <div th:each="imageURL : ${imageURLs}">
+        <img class="image" th:src="@{${imageURL}}" alt="Uploaded Image">
+    </div>
+</div>
+
+<div class="button-container">
+    <a th:href="@{/gallery}" class="gallery-button">Go to Gallery</a>
+</div>
+</body>
+</html>

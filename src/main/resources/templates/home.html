@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Our Image Gallery</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .form-container {
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            padding: 50px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .gallery-button {
+            display: inline-block;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to Our Image Gallery</h1><br>
+    <p>Share and discover amazing images.<br>
+        Upload your images to our gallery and explore what others have shared.</p>
+</div>
+<div class="form-container">
+    <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+        <input type="file" name="images" multiple="multiple" placeholder="Upload files" accept="image/*" />
+        <input type="submit" value="Submit">
+    </form>
+</div>
+<div class="button-container">
+    <a th:href="@{/gallery}" class="gallery-button">Jump to Gallery</a>
+</div>
+</body>
+</html>
